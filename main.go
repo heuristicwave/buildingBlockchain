@@ -1,17 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
 
-type person struct {
-	name string
-	age  int
-}
-
-func (instance person) sayHi() {
-	fmt.Printf("Hi, My name is %s and %d", instance.name, instance.age)
-}
+	"githun.com/heuristicwave/buildingBlockchain/person"
+)
 
 func main() {
-	my := person{"heuri", 7}
-	my.sayHi()
+	my := person.Person{}
+	my.SetDetails("heuri", 7)
+	fmt.Println("Main : ", my)
 }
