@@ -20,7 +20,7 @@ type homeData struct {
 func home(rw http.ResponseWriter, r *http.Request) {
 	// ParseFiles 는 에러를 return 하므로 같이 지정하는데,
 	// Must를 사용하여 if err!=nil 까지 대체
-	tmpl := template.Must(template.ParseFiles("templates/home.html"))
+	tmpl := template.Must(template.ParseFiles("templates/home.gohtml"))
 	// Template에 Handler에서 만든 data 전달
 	data := homeData{"Home", blockchain.GetBlockchain().AllBlocks()}
 	tmpl.Execute(rw, data)
