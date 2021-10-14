@@ -5,16 +5,16 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-
-	"githun.com/heuristicwave/buildingBlockchain/utils"
 )
 
 const port string = ":4000"
 
+// struct field tag, omitempty : hide unless object
 type URLDescription struct {
-	URL         string
-	Method      string
-	Description string
+	URL         string `json:"url"`
+	Method      string `json:"method"`
+	Description string `json:"description"`
+	Payload     string `json:"payload,omitempty"`
 }
 
 // Sending JSON our users
@@ -25,10 +25,17 @@ func documentation(rw http.ResponseWriter, r *http.Request) {
 			Method:      "GET",
 			Description: "See Documentation",
 		},
+		{
+			URL:         "/blocks",
+			Method:      "POST",
+			Description: "Add A Block",
+			Payload:     "data:string",
+		},
 	}
-	jsonByte, err := json.Marshal(data) // (byte, error)
-	utils.HandleErr(err)
-	fmt.Printf("%s", jsonByte)
+	// text/plain => json
+	rw.Header().Add("Content-Type", "application/json")
+	// Use NewEncoder instead of Marshal
+	json.NewEncoder(rw).Encode(data)
 }
 
 func main() {
