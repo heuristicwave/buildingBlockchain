@@ -1,10 +1,9 @@
 package main
 
 import (
-	"githun.com/heuristicwave/buildingBlockchain/rest"
+	"githun.com/heuristicwave/buildingBlockchain/cli"
 )
 
 func main() {
-	// go explorer.Start(3000)
-	rest.Start(4000)
+	cli.Start()
 }
