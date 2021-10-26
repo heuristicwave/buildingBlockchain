@@ -1,9 +1,9 @@
 package main
 
 import (
-	"githun.com/heuristicwave/buildingBlockchain/cli"
+	"githun.com/heuristicwave/buildingBlockchain/blockchain"
 )
 
 func main() {
-	cli.Start()
+	blockchain.Blockchain()
 }
