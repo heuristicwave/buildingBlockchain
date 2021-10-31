@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"runtime"
 
 	"githun.com/heuristicwave/buildingBlockchain/explorer"
 	"githun.com/heuristicwave/buildingBlockchain/rest"
@@ -15,7 +16,7 @@ func usage() {
 	fmt.Printf("-hport:		Set the PORT of the html server\n")
 	fmt.Printf("-rport:		Set the PORT of the rest server\n")
 	fmt.Printf("-mode:		Choose between 'html' and 'rest' or 'all'\n\n")
-	os.Exit(0)
+	runtime.Goexit()
 }
 
 func Start() {
@@ -23,8 +24,8 @@ func Start() {
 		usage()
 	}
 
-	hport := flag.Int("hport", 4000, "Set port of the html server")
-	rport := flag.Int("rport", 4001, "Set port of the rest server")
+	rport := flag.Int("rport", 4000, "Set port of the rest server")
+	hport := flag.Int("hport", 4001, "Set port of the html server")
 	mode := flag.String("mode", "rest", "Choose between 'html' and 'rest' or 'all'")
 
 	flag.Parse()

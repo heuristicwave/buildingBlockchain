@@ -1,11 +1,11 @@
 package main
 
 import (
-	"githun.com/heuristicwave/buildingBlockchain/blockchain"
 	"githun.com/heuristicwave/buildingBlockchain/cli"
+	"githun.com/heuristicwave/buildingBlockchain/db"
 )
 
 func main() {
-	blockchain.Blockchain()
+	defer db.Close()
 	cli.Start()
 }

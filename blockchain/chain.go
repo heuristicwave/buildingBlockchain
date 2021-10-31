@@ -31,6 +31,21 @@ func (b *blockchain) AddBlock(data string) {
 	b.persist()
 }
 
+func (b *blockchain) Blocks() []*Block {
+	var blocks []*Block // slice of pointer's block
+	hashCursor := b.NewestHash
+	for {
+		block, _ := FindBlock(hashCursor)
+		blocks = append(blocks, block)
+		if block.PrevHash != "" {
+			hashCursor = block.PrevHash
+		} else {
+			break
+		}
+	}
+	return blocks
+}
+
 // Singleton : 변수를 외부와 공유하지 않고 아래 함수를 통해 노출
 func Blockchain() *blockchain {
 	if b == nil {
