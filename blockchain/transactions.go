@@ -1,6 +1,7 @@
 package blockchain
 
 import (
+	"errors"
 	"time"
 
 	"githun.com/heuristicwave/buildingBlockchain/utils"
@@ -9,6 +10,13 @@ import (
 const (
 	minerReward int = 50
 )
+
+type mempool struct {
+	Txs []*Tx
+}
+
+// Initialize empty mempool
+var Mempool *mempool = &mempool{}
 
 type Tx struct {
 	Id        string   `json:"id"`
@@ -46,4 +54,19 @@ func makeCoinbaseTx(address string) *Tx {
 	}
 	tx.getId()
 	return &tx
+}
+
+func makeTx(from, to string, amount int) (*Tx, error) {
+	if Blockchain().BalanceByAddress(from) < amount {
+		return nil, errors.New("Not enough money")
+	}
+}
+
+func (m *mempool) AddTx(to string, amount int) error {
+	tx, err := makeTx("test", to, amount)
+	if err != nil {
+		return err
+	}
+	m.Txs = append(m.Txs, tx)
+	return nil
 }
