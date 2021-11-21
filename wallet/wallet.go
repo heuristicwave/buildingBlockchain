@@ -1,8 +1,10 @@
 package wallet
 
 import (
+	"crypto/ecdsa"
 	"crypto/x509"
 	"encoding/hex"
+	"fmt"
 	"math/big"
 
 	"githun.com/heuristicwave/buildingBlockchain/utils"
@@ -31,4 +33,12 @@ func Start() {
 	bigR.SetBytes(rBytes)
 	bigS.SetBytes(sBytes)
 	// utils.HandleErr(err)
+
+	hashBytes, err := hex.DecodeString(hashedMessage)
+
+	utils.HandleErr(err)
+
+	ok := ecdsa.Verify(&private.PublicKey, hashBytes, &bigR, &bigS)
+
+	fmt.Println(ok)
 }
