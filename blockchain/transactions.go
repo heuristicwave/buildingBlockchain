@@ -46,8 +46,7 @@ type UTxOut struct {
 	Amount int    `json:"amount"`
 }
 
-func isOnMempool(uTxOut *UTxOut) bool {
-	exists := false
+func isOnMempool(uTxOut *UTxOut) (exists bool) {
 Outer:
 	for _, tx := range Mempool.Txs {
 		for _, input := range tx.TxIns {
@@ -57,7 +56,7 @@ Outer:
 			}
 		}
 	}
-	return exists
+	return
 }
 
 func makeCoinbaseTx(address string) *Tx {
