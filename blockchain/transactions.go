@@ -26,10 +26,6 @@ type Tx struct {
 	TxOuts    []*TxOut `json:"txOuts"`
 }
 
-func (t *Tx) getId() {
-	t.ID = utils.Hash(t)
-}
-
 type TxIn struct {
 	TxID      string `json:"txId"`
 	Index     int    `json:"index"`
