@@ -4,7 +4,6 @@ import (
 	"flag"
 	"fmt"
 	"os"
-	"runtime"
 
 	"githun.com/heuristicwave/buildingBlockchain/explorer"
 	"githun.com/heuristicwave/buildingBlockchain/rest"
@@ -16,7 +15,8 @@ func usage() {
 	fmt.Printf("-hport:		Set the PORT of the html server\n")
 	fmt.Printf("-rport:		Set the PORT of the rest server\n")
 	fmt.Printf("-mode:		Choose between 'html' and 'rest' or 'all'\n\n")
-	runtime.Goexit()
+	// runtime.Goexit()
+	os.Exit(0)
 }
 
 func Start() {

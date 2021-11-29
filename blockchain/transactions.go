@@ -33,7 +33,7 @@ type TxIn struct {
 }
 
 type TxOut struct {
-	Address string `json:"Address"`
+	Address string `json:"address"`
 	Amount  int    `json:"amount"`
 }
 
