@@ -29,10 +29,44 @@ In Go, `nil` is the **zero value for pointers, interfaces, maps, slices, channel
 - [Stringer](https://pkg.go.dev/golang.org/x/tools/cmd/stringer)
 - [MarshalText](https://pkg.go.dev/encoding#TextMarshaler)
 - [Gorilla Web Toolkit](https://www.gorillatoolkit.org/)
+  - [Gorilla WebSocket](https://pkg.go.dev/github.com/gorilla/websocket)
 - [bolt db](https://github.com/boltdb/bolt)
   - [bolt browser](https://github.com/br0xen/boltbrowser)
   - [bolt web](https://github.com/evnix/boltdbweb)
 - [gob](https://pkg.go.dev/encoding/gob) : value를 byte로 encode or decode
+
+### Channels
+
+```go
+// Only Send Channel
+func send(c chan<- int) {
+	for i := range [10]int{} {
+		fmt.Printf(">> sending %d <<\n", i)
+		c <- i
+		fmt.Printf(">> sent %d <<\n", i)
+	}
+	close(c) // avoid deadlock
+}
+
+// Only Receive Channel
+func receive(c <-chan int) {
+	for {
+		time.Sleep(10 * time.Second)
+		a, ok := <-c
+		if !ok {
+			fmt.Println("Done")
+			break
+		}
+		fmt.Printf("|| received %d ||\n", a)
+	}
+}
+
+func main() {
+	c := make(chan int, 10) // Buffer Channel
+	go send(c)
+	receive(c)
+}
+```
 
 ## Tools
 
