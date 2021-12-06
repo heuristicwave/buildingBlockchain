@@ -21,4 +21,9 @@ http://localhost:4000/balance/reciever
 ###
 http://localhost:4000/balance/test?total=true
 ###
-http://localhost:4000/balance/cd1654184702bf7dff459fe12817429e9dd858394aa0502736ca1962038c7edd97ddd2ae020e3a834563546de4d8c9418ac45949bfcf064c9dbeef450fdde67a
+POST http://localhost:4000/peers
+
+{
+    "address": "127.0.0.1",
+    "port": "3000"
+} 
