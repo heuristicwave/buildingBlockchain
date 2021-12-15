@@ -33,7 +33,10 @@ In Go, `nil` is the **zero value for pointers, interfaces, maps, slices, channel
 - [bolt db](https://github.com/boltdb/bolt)
   - [bolt browser](https://github.com/br0xen/boltbrowser)
   - [bolt web](https://github.com/evnix/boltdbweb)
+  - [bbolt](https://github.com/etcd-io/bbolt)
 - [gob](https://pkg.go.dev/encoding/gob) : value를 byte로 encode or decode
+
+- [godoc](https://pkg.go.dev/golang.org/x/tools/cmd/godoc)
 
 ### Channels
 
