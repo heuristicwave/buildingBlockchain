@@ -1,6 +1,9 @@
 package p2p
 
 import (
+	"encoding/json"
+	"fmt"
+
 	"githun.com/heuristicwave/buildingBlockchain/blockchain"
 	"githun.com/heuristicwave/buildingBlockchain/utils"
 )
@@ -32,4 +35,13 @@ func sendNewestBlock(p *peer) {
 	m := makeMessage(MessageNewestBlock, b)
 	p.inbox <- m
 
+}
+
+func handleMsg(m *Message, p *peer) {
+	switch m.Kind {
+	case MessageNewestBlock:
+		var payload blockchain.Block
+		utils.HandleErr(json.Unmarshal(m.Payload, &payload))
+		fmt.Println(payload)
+	}
 }
