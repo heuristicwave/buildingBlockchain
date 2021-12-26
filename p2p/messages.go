@@ -60,7 +60,6 @@ func handleMsg(m *Message, p *peer) {
 			fmt.Printf("Requesting all blocks from %s\n", p.key)
 			requestAllBlocks(p)
 		} else {
-			fmt.Printf("Sending newest block to %s\n", p.key)
 			sendNewestBlock(p)
 		}
 	case MessageAllBlocksRequest:
