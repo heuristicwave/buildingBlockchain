@@ -1,6 +1,8 @@
 package blockchain
 
 import (
+	"encoding/json"
+	"net/http"
 	"sync"
 
 	"githun.com/heuristicwave/buildingBlockchain/db"
@@ -18,6 +20,7 @@ type blockchain struct {
 	NewestHash        string `json:"newestHash"`
 	Height            int    `json:"height"`
 	CurrentDifficulty int    `json:"currentDifficulty"`
+	m                 sync.Mutex
 }
 
 var b *blockchain
@@ -42,6 +45,9 @@ func (b *blockchain) AddBlock() {
 }
 
 func Blocks(b *blockchain) []*Block {
+	// avoid data race
+	b.m.Lock()
+	defer b.m.Unlock()
 	var blocks []*Block // slice of pointer's block
 	hashCursor := b.NewestHash
 	for {
@@ -154,7 +160,15 @@ func Blockchain() *blockchain {
 	return b
 }
 
+func Status(b *blockchain, rw http.ResponseWriter) {
+	b.m.Lock()
+	defer b.m.Unlock()
+	utils.HandleErr(json.NewEncoder(rw).Encode(b))
+}
+
 func (b *blockchain) Replace(newBlocks []*Block) {
+	b.m.Lock()
+	defer b.m.Unlock()
 	b.CurrentDifficulty = newBlocks[0].Difficulty
 	b.Height = len(newBlocks)
 	b.NewestHash = newBlocks[0].Hash

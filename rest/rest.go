@@ -120,7 +120,7 @@ func block(rw http.ResponseWriter, r *http.Request) {
 }
 
 func status(rw http.ResponseWriter, r *http.Request) {
-	utils.HandleErr(json.NewEncoder(rw).Encode(blockchain.Blockchain()))
+	blockchain.Status(blockchain.Blockchain(), rw)
 }
 
 // Adapter Pattern
