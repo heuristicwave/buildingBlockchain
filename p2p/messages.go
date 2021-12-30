@@ -79,6 +79,6 @@ func handleMsg(m *Message, p *peer) {
 	case MessageNewBlockNotify:
 		var payload *blockchain.Block
 		utils.HandleErr(json.Unmarshal(m.Payload, &payload))
-		// blockchain.Blockchain().AddPeerBlock(payload)
+		blockchain.Blockchain().AddPeerBlock(payload)
 	}
 }
