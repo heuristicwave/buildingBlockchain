@@ -3,9 +3,10 @@ package p2p
 import (
 	"encoding/json"
 	"fmt"
+	"strings"
 
-	"githun.com/heuristicwave/buildingBlockchain/blockchain"
-	"githun.com/heuristicwave/buildingBlockchain/utils"
+	"github.com/heuristicwave/buildingBlockchain/blockchain"
+	"github.com/heuristicwave/buildingBlockchain/utils"
 )
 
 type MessageKind int
@@ -99,7 +100,8 @@ func handleMsg(m *Message, p *peer) {
 	case MessageNewPeerNotify:
 		var payload string
 		utils.HandleErr(json.Unmarshal(m.Payload, &payload))
-		fmt.Printf("I will now /ws upgrade %s", payload)
-		AddPeer()
+		// fmt.Println(payload) => 127.0.0.1:2000:4000
+		parts := strings.Split(payload, ":")
+		AddPeer(parts[0], parts[1], parts[2], false)
 	}
 }

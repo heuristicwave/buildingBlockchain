@@ -1,4 +1,4 @@
-module githun.com/heuristicwave/buildingBlockchain
+module github.com/heuristicwave/buildingBlockchain
 
 go 1.16
 

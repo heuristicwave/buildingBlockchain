@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"githun.com/heuristicwave/buildingBlockchain/utils"
+	"github.com/heuristicwave/buildingBlockchain/utils"
 	bolt "go.etcd.io/bbolt"
 )
 

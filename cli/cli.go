@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"os"
 
-	"githun.com/heuristicwave/buildingBlockchain/explorer"
-	"githun.com/heuristicwave/buildingBlockchain/rest"
+	"github.com/heuristicwave/buildingBlockchain/explorer"
+	"github.com/heuristicwave/buildingBlockchain/rest"
 )
 
 func usage() {

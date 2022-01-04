@@ -10,7 +10,7 @@ import (
 	"math/big"
 	"os"
 
-	"githun.com/heuristicwave/buildingBlockchain/utils"
+	"github.com/heuristicwave/buildingBlockchain/utils"
 )
 
 const (

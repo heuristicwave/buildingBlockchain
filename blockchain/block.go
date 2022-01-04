@@ -6,8 +6,8 @@ import (
 	"strings"
 	"time"
 
-	"githun.com/heuristicwave/buildingBlockchain/db"
-	"githun.com/heuristicwave/buildingBlockchain/utils"
+	"github.com/heuristicwave/buildingBlockchain/db"
+	"github.com/heuristicwave/buildingBlockchain/utils"
 )
 
 type Block struct {

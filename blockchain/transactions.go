@@ -5,8 +5,8 @@ import (
 	"sync"
 	"time"
 
-	"githun.com/heuristicwave/buildingBlockchain/utils"
-	"githun.com/heuristicwave/buildingBlockchain/wallet"
+	"github.com/heuristicwave/buildingBlockchain/utils"
+	"github.com/heuristicwave/buildingBlockchain/wallet"
 )
 
 const (

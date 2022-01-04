@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"text/template"
 
-	"githun.com/heuristicwave/buildingBlockchain/blockchain"
+	"github.com/heuristicwave/buildingBlockchain/blockchain"
 )
 
 const (
