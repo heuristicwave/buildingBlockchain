@@ -1,8 +1,8 @@
 package main
 
 import (
-	"githun.com/heuristicwave/buildingBlockchain/cli"
-	"githun.com/heuristicwave/buildingBlockchain/db"
+	"github.com/heuristicwave/buildingBlockchain/cli"
+	"github.com/heuristicwave/buildingBlockchain/db"
 )
 
 func main() {
