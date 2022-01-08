@@ -35,8 +35,11 @@ In Go, `nil` is the **zero value for pointers, interfaces, maps, slices, channel
   - [bolt web](https://github.com/evnix/boltdbweb)
   - [bbolt](https://github.com/etcd-io/bbolt)
 - [gob](https://pkg.go.dev/encoding/gob) : value를 byte로 encode or decode
-
+- [iota](https://go.dev/ref/spec#Iota) : iota를 활용한 프로그래밍
 - [godoc](https://pkg.go.dev/golang.org/x/tools/cmd/godoc)
+  ```shell
+  godoc -http=:6060
+  ```
 
 ### Channels
 
@@ -69,6 +72,22 @@ func main() {
 	go send(c)
 	receive(c)
 }
+```
+
+### Testing
+
+```shell
+go test ./... -v
+```
+
+**Coverage**
+
+```shell
+# create profile
+go test -v -coverprofile cover.out ./...
+
+# visualize
+go tool cover -html=cover.out
 ```
 
 ## Tools
